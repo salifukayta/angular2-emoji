@@ -15,7 +15,7 @@ export class EmojiUtil {
         }
       }
     }
-    return emoji;
+    return ':' + emoji + ':';
   }
 
   public getAll() {

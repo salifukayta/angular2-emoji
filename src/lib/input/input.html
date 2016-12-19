@@ -1,11 +1,18 @@
-<input type="text" (keyup.enter)="onEnter()" [(ngModel)]="input" (ngModelChange)="onChange($event)" />
-<div class="emoji-opener" (click)="togglePopup()"></div>
+<div class="input-emoji-container">
+  <div (input)="onChange($event)" [class.full-width]="fullWidth!=undefined">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="emoji-opener" (click)="togglePopup()"></div>
+</div>
+
 <div class="emoji-search" [ngClass]="popupAnchor" [hidden]="!popupOpen">
   <div class="search-header">
-    <input type="search" [(ngModel)]="filterEmojis" placeholder="Search..." />
+    <input type="search" [(ngModel)]="filterEmojis" placeholder="Search..."/>
   </div>
   <div class="emojis-container">
-    <span *ngFor="let emoji of getFilteredEmojis()" (click)="onEmojiClick(emoji.emoji)" title="{{emoji.aliases[0]}}">
+    <span *ngFor="let emoji of getFilteredEmojis()" (click)="onEmojiClick(emoji.emoji)"
+          title="{{emoji.aliases[0]}}">
       {{emoji.emoji}}
     </span>
   </div>

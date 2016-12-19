@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 
 import { EmojiUtil } from '../util/util';
 
@@ -10,8 +10,8 @@ import { EmojiUtil } from '../util/util';
 export class EmojiInputComponent implements OnInit, OnChanges {
 
   @Input() popupAnchor = 'top';
-  @Input() onEnter: Function = () => {};
   @Input() model: any;
+  @Input() fullWidth: boolean;
   @Output() modelChange: any = new EventEmitter();
 
   input: string;
@@ -57,8 +57,8 @@ export class EmojiInputComponent implements OnInit, OnChanges {
     this.popupOpen = false;
   }
 
-  onChange(newValue) {
-    this.input = this.emojiUtil.emojify(newValue);
+  onChange(event) {
+    this.input = this.emojiUtil.emojify(event.srcElement.value);
     this.model = this.input;
     this.modelChange.emit(this.input);
   }

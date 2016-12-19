@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   testModel: string;
+  testModel2: string;
+  testModel3: string;
+  testModel4: string;
   pressedCount: number = 0;
   enterTest() {
-    this.pressedCount = this.pressedCount + 1;
     this.testModel = '';
+    this.testModel2 = '';
+    this.testModel3 = '';
+    this.testModel4 = '';
   }
 }
